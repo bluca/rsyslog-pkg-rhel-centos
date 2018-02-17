@@ -34,13 +34,13 @@ BuildRequires: liblogging-devel
 BuildRequires: automake
 BuildRequires: autoconf >= 2.52
 BuildRequires: libtool
-%if %{?rhel} >= 6
+%if 0%{?rhel} >= 6
 Requires: libfastjson4 >= 0.99.8
 BuildRequires: libfastjson4-devel >= 0.99.8
 %else
 BuildRequires: json-c-devel
 %endif
-%if %{?rhel} >= 7
+%if 0%{?rhel} >= 7
 BuildRequires: systemd-devel
 BuildRequires: byacc
 BuildRequires: flex
@@ -50,7 +50,7 @@ BuildRequires: flex
 # tweak the upstream service file to honour configuration from /etc/sysconfig/rsyslog
 
 # SystemD Patch needed for CentOS 7
-#%if %{?rhel} >= 7
+#%if 0%{?rhel} >= 7
 #Patch0: rsyslog-systemd-centos7.patch
 Patch0: 01-rsyslog-8.32.0-rscript_parse_json.patch
 Patch1: 02-rsyslog-8.32.0-jsonmesg-assert.patch
@@ -360,7 +360,7 @@ globally distributed by Guardtime.
 
 %prep
 %setup -q
-#%if %{?rhel} >= 7
+#%if 0%{?rhel} >= 7
 %patch0 -p1 
 %patch1 -p1
 %patch2 -p1
