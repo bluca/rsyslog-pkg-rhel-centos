@@ -2,6 +2,7 @@
 %global _libdir %{_exec_prefix}/%{_lib}
 %define rsyslog_statedir %{_sharedstatedir}/rsyslog
 %define rsyslog_pkidir %{_sysconfdir}/pki/rsyslog
+%define _unpackaged_files_terminate_build 0
 
 # Set PIDFILE Variable!
 %if 0%{?rhel} >= 6
