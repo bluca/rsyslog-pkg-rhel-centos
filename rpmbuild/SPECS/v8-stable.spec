@@ -25,7 +25,7 @@ URL: http://www.rsyslog.com/
 Source0: http://www.rsyslog.com/files/download/rsyslog/%{name}-%{version}.tar.gz
 Source1: %{rsysloginit}
 Source2: rsyslog_v7.conf
-Source3: rsyslog.sysconfig
+Source3: rsyslog.
 Source4: %{rsysloglog}
 #Requires: libgt
 BuildRequires: libestr-devel
@@ -445,14 +445,18 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 install -d -m 755 $RPM_BUILD_ROOT%{_initrddir}
+%if 0%{?rhel}
 install -d -m 755 $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
+%endif
 install -d -m 755 $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d
 install -d -m 755 $RPM_BUILD_ROOT%{_sysconfdir}/rsyslog.d
 install -d -m 700 $RPM_BUILD_ROOT%{rsyslog_statedir}
 install -d -m 700 $RPM_BUILD_ROOT%{rsyslog_pkidir}
 
 install -p -m 755 %{SOURCE1} $RPM_BUILD_ROOT%{_initrddir}/rsyslog
+%if 0%{?rhel}
 install -p -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rsyslog
+%endif
 install -p -m 644 %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/syslog
 install -p -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/rsyslog.conf
 
@@ -540,7 +544,9 @@ mv /var/lock/subsys/rsyslogd /var/lock/subsys/rsyslog
 %{_bindir}/rscryutil
 %endif
 %config(noreplace) %{_sysconfdir}/rsyslog.conf
+%if 0%{?rhel}
 %config(noreplace) %{_sysconfdir}/sysconfig/rsyslog
+%endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/syslog
 %dir %{_sysconfdir}/rsyslog.d
 %dir %{rsyslog_statedir}
