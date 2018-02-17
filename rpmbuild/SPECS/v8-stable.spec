@@ -522,7 +522,7 @@ mv /var/lock/subsys/rsyslogd /var/lock/subsys/rsyslog
 %{_libdir}/rsyslog/lmtcpsrv.so
 %{_libdir}/rsyslog/lmzlibw.so
 %{_libdir}/rsyslog/omtesting.so
-%{_libdir}/rsyslog/ommail.so
+#%{_libdir}/rsyslog/ommail.so
 %{_libdir}/rsyslog/omprog.so
 # %{_libdir}/rsyslog/omruleset.so
 %{_libdir}/rsyslog/omuxsock.so
