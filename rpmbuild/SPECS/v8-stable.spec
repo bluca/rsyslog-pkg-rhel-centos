@@ -545,6 +545,8 @@ mv /var/lock/subsys/rsyslogd /var/lock/subsys/rsyslog
 %dir %{_sysconfdir}/rsyslog.d
 %dir %{rsyslog_statedir}
 %dir %{rsyslog_pkidir}
+%dir %{_sharedstatedir}
+%dir  %{_sysconfdir}/pki
 %{_initrddir}/rsyslog
 %{_sbindir}/rsyslogd
 %{_mandir}/*/*
